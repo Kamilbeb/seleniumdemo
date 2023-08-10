@@ -13,7 +13,9 @@ public class HomePage {
     private  WebDriver driver;
 
     public HomePage (WebDriver driver){     //konstruktor inicjalizuje działanie pola myAccountLink i pozostałych
+
         PageFactory.initElements(driver,this);
+        this.driver = driver;
     }
 
     public MyAccountPage openMyAccountPage(){
