@@ -12,7 +12,7 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -20,7 +20,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }

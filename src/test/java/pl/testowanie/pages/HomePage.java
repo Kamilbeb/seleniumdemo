@@ -10,15 +10,15 @@ public class HomePage {
     @FindBy(xpath = "//span[text()='My account']")
     private WebElement myAccountLink;
 
-    private  WebDriver driver;
+    private WebDriver driver;
 
-    public HomePage (WebDriver driver){     //konstruktor inicjalizuje działanie pola myAccountLink i pozostałych
+    public HomePage(WebDriver driver) {     //konstruktor inicjalizuje działanie pola myAccountLink i pozostałych
 
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public MyAccountPage openMyAccountPage(){
+    public MyAccountPage openMyAccountPage() {
         myAccountLink.click();
         return new MyAccountPage(driver);
     }
