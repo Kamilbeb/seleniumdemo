@@ -1,11 +1,12 @@
 package pl.testowanie.tests;
 
 import org.testng.annotations.Test;
+import pl.testowanie.pages.HomePage;
 
-public class RegisterTest {
+public class RegisterTest extends BaseTest {
 
     @Test
     public void registerUserTest(){
-        System.out.println("Mock");
+        new HomePage(driver).openMyAccountPage();
     }
 }
