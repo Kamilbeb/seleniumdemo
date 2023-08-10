@@ -9,7 +9,8 @@ public class CheckoutTest extends BaseTest {
 
     @Test
     public void checkoutTest() {
-        new HomePage(driver).openShopPage().openProduct("Java Selenium WebDriver").addProductToCard();
+        new HomePage(driver).openShopPage().openProduct("Java Selenium WebDriver")
+                .addProductToCard().viewCart().openAddressDetails();
 
     }
 
