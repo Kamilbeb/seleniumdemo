@@ -14,8 +14,8 @@ public class CheckoutTest extends BaseTest {
         Customer customer = new Customer();
         customer.setEmail("specifedemail@gmail.com"); // nadpisywanie wartości domyślnej
         OrderDetailsPage orderDetailsPage = new HomePage(driver)
-                .openShopPage().
-                openProduct("Java Selenium WebDriver")
+                .openShopPage()
+                .openProduct("Java Selenium WebDriver")
                 .addProductToCard()
                 .viewCart()
                 .openAddressDetails()

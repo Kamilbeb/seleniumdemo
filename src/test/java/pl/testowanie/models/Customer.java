@@ -2,7 +2,7 @@ package pl.testowanie.models;
 
 public class Customer {
 
-    private String firstName = "Kamil";
+    private String firstName = "Tomek";
     private String lastName = "Testowy";
     private String companyName = "TMT";
     private String country = "Poland";
