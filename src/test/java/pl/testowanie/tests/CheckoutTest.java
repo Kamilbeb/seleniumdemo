@@ -13,12 +13,15 @@ public class CheckoutTest extends BaseTest {
 
         Customer customer = new Customer();
         customer.setEmail("specifedemail@gmail.com"); // nadpisywanie wartości domyślnej
-        OrderDetailsPage orderDetailsPage = new HomePage(driver).openShopPage().openProduct("Java Selenium WebDriver")
-                .addProductToCard().viewCart().openAddressDetails()
+        OrderDetailsPage orderDetailsPage = new HomePage(driver)
+                .openShopPage().
+                openProduct("Java Selenium WebDriver")
+                .addProductToCard()
+                .viewCart()
+                .openAddressDetails()
                 .fillAddressDetails(customer,"Some comment");
 
         Assert.assertEquals(orderDetailsPage.getOrderNotice().getText(),"Thank you. Your order has been received.");
         Assert.assertEquals(orderDetailsPage.getProductName().getText(),"Java Selenium WebDriver × 1");
     }
-
 }
