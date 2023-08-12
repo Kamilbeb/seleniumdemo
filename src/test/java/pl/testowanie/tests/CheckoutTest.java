@@ -1,5 +1,7 @@
 package pl.testowanie.tests;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,6 +13,7 @@ public class CheckoutTest extends BaseTest {
 
     @Test
     public void checkoutTest() {
+        ExtentTest test = extentReports.createTest("Check out Test");
 
         Customer customer = new Customer();
         customer.setEmail("specifedemail@gmail.com"); // nadpisywanie wartości domyślnej
@@ -24,14 +27,17 @@ public class CheckoutTest extends BaseTest {
 
         Assert.assertEquals(orderDetailsPage.getOrderNotice().getText(), "Thank you. Your order has been received.");
         Assert.assertEquals(orderDetailsPage.getProductName().getText(), "Java Selenium WebDriver × 1");
+        test.log(Status.PASS,"Assertions passed");
     }
 
     @Test
     public void openShopPage() {
+        ExtentTest test = extentReports.createTest("Open shop page");
         HomePage homePage = new HomePage(driver);
         homePage.openShopPageWithButton();
         String shopTitle = driver.findElement(By.className("page-title")).getText();
 
         Assert.assertEquals(shopTitle, "Shop");
+        test.log(Status.PASS,"Assertions passed");
     }
 }
