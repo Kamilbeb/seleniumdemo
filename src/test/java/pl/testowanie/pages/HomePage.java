@@ -28,6 +28,12 @@ public class HomePage {
     @FindBy(className = "sek-form-message")
     private WebElement sekFormMessage;
 
+    @FindBy(xpath = "//a[@class='czr-title' and @title='Permalink to Second post']")
+    private WebElement linkToSecondPost;
+
+    @FindBy(xpath = "//a[@class='czr-title' and @title='Permalink to Hello World']")
+    private WebElement linkToThirdPost;
+
     private WebDriver driver;
 
     public HomePage(WebDriver driver) {     //konstruktor inicjalizuje działanie pola myAccountLink i pozostałych
@@ -55,5 +61,15 @@ public class HomePage {
 
     public WebElement getContactMessageNotice() {
         return sekFormMessage;
+    }
+
+    public PostPage openSecondPostPage() {
+        linkToSecondPost.click();
+        return new PostPage(driver);
+    }
+
+    public PostPage openThirdPostPage() {
+        linkToThirdPost.click();
+        return new PostPage(driver);
     }
 }
