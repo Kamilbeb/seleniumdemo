@@ -1,5 +1,7 @@
 package pl.testowanie.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +26,7 @@ public class PostPage {
     private WebElement postCommentButton;
 
     private WebDriver driver;
+    private static final Logger logger = LogManager.getLogger();
 
     public PostPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -34,11 +37,13 @@ public class PostPage {
         return postTitle;
     }
 
-    public void sendComment(Customer customer, String comment){
+    public void sendComment(Customer customer, String comment) {
+        logger.info("Filling comment");
         postCommentInput.sendKeys(comment);
         postCommentAuthorInput.sendKeys(customer.getFirstName());
         postCommentEmail.sendKeys(customer.getEmail());
         postCommentButton.click();
+        logger.info("Filling comment done");
     }
 }
 

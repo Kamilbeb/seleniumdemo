@@ -1,5 +1,7 @@
 package pl.testowanie.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,6 +41,8 @@ public class HomePage {
 
     private WebDriver driver;
 
+    private static final Logger logger = LogManager.getLogger();
+
     public HomePage(WebDriver driver) {     //konstruktor inicjalizuje działanie pola myAccountLink i pozostałych
 
         PageFactory.initElements(driver, this);
@@ -56,10 +60,12 @@ public class HomePage {
     }
 
     public void ContactUsMessage(String name, String email, String message) {
+        logger.info("Filling contact form");
         nimbleNameInput.sendKeys(name);
         nimbleEmailInput.sendKeys(email);
         nimbleMassageInput.sendKeys(message);
         nimbleMessageButton.click();
+        logger.info("Filling contact form done");
     }
 
     public WebElement getContactMessageNotice() {

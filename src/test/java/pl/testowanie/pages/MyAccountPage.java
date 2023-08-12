@@ -50,6 +50,7 @@ public class MyAccountPage {
     private void registerUser(String email, String password) { //metoda do rejestracji
         regEmailInput.sendKeys(email);
         regPasswordInput.sendKeys(password);
+        SeleniumHelper.waitForClickable(registerButton,driver);
         registerButton.click();
     }
 
