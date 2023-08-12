@@ -1,5 +1,6 @@
 package pl.testowanie.tests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.testowanie.models.Customer;
@@ -19,9 +20,18 @@ public class CheckoutTest extends BaseTest {
                 .addProductToCard()
                 .viewCart()
                 .openAddressDetails()
-                .fillAddressDetails(customer,"Some comment");
+                .fillAddressDetails(customer, "Some comment");
 
-        Assert.assertEquals(orderDetailsPage.getOrderNotice().getText(),"Thank you. Your order has been received.");
-        Assert.assertEquals(orderDetailsPage.getProductName().getText(),"Java Selenium WebDriver × 1");
+        Assert.assertEquals(orderDetailsPage.getOrderNotice().getText(), "Thank you. Your order has been received.");
+        Assert.assertEquals(orderDetailsPage.getProductName().getText(), "Java Selenium WebDriver × 1");
+    }
+
+    @Test
+    public void openShopPage() {
+        HomePage homePage = new HomePage(driver);
+        homePage.openShopPageWithButton();
+        String shopTitle = driver.findElement(By.className("page-title")).getText();
+
+        Assert.assertEquals(shopTitle, "Shop");
     }
 }

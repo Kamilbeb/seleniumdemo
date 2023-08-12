@@ -34,6 +34,9 @@ public class HomePage {
     @FindBy(xpath = "//a[@class='czr-title' and @title='Permalink to Hello World']")
     private WebElement linkToThirdPost;
 
+    @FindBy(xpath = "//span[@class='sek-btn-inner']")
+    private WebElement linkToShop;
+
     private WebDriver driver;
 
     public HomePage(WebDriver driver) {     //konstruktor inicjalizuje działanie pola myAccountLink i pozostałych
@@ -71,5 +74,10 @@ public class HomePage {
     public PostPage openThirdPostPage() {
         linkToThirdPost.click();
         return new PostPage(driver);
+    }
+
+    public ProductListPage openShopPageWithButton() {
+        linkToShop.click();
+        return new ProductListPage(driver);
     }
 }
