@@ -4,13 +4,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pl.testowanie.models.Customer;
 
 public class PostPage {
 
     @FindBy(xpath = "//h1[@class='entry-title']")
-    private WebElement PostTitle;
+    private WebElement postTitle;
 
-    @FindBy
+    @FindBy(id = "comment")
+    private WebElement postCommentInput;
+
+    @FindBy(id = "author")
+    private WebElement postCommentAuthorInput;
+
+    @FindBy(id = "email")
+    private WebElement postCommentEmail;
+
+    @FindBy(name = "submit")
+    private WebElement postCommentButton;
 
     private WebDriver driver;
 
@@ -20,6 +31,14 @@ public class PostPage {
     }
 
     public WebElement getPostTitle() {
-        return PostTitle;
+        return postTitle;
+    }
+
+    public void sendComment(Customer customer, String comment){
+        postCommentInput.sendKeys(comment);
+        postCommentAuthorInput.sendKeys(customer.getFirstName());
+        postCommentEmail.sendKeys(customer.getEmail());
+        postCommentButton.click();
     }
 }
+
