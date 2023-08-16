@@ -15,13 +15,13 @@ public class HomePage {
     @FindBy(xpath = "//span[text()='Shop']")
     private WebElement shopLink;
 
-    @FindBy(id = "nimble_name1130622852")
+    @FindBy(xpath = "//input[@name='nimble_name']")
     private WebElement nimbleNameInput;
 
-    @FindBy(id = "nimble_email1130622852")
+    @FindBy(xpath = "//input[@name='nimble_email']")
     private WebElement nimbleEmailInput;
 
-    @FindBy(id = "nimble_message1130622852")
+    @FindBy(xpath = "//textarea[@name='nimble_message']")
     private WebElement nimbleMassageInput;
 
     @FindBy(xpath = "//input[@name='nimble_submit']")
@@ -33,7 +33,7 @@ public class HomePage {
     @FindBy(xpath = "//a[@class='czr-title' and @title='Permalink to Second post']")
     private WebElement linkToSecondPost;
 
-    @FindBy(xpath = "//a[@class='czr-title' and @title='Permalink to Hello World']")
+    @FindBy(xpath = "//a[@title='Permalink to Hello World']")
     private WebElement linkToThirdPost;
 
     @FindBy(xpath = "//span[@class='sek-btn-inner']")
