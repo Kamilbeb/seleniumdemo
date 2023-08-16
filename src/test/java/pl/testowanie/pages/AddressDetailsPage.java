@@ -1,5 +1,7 @@
 package pl.testowanie.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,26 +46,30 @@ public class AddressDetailsPage {
 
     private WebDriver driver;
 
+    private static final Logger logger = LogManager.getLogger();
+
     public AddressDetailsPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public OrderDetailsPage fillAddressDetails(Customer customer, String comments){
+    public OrderDetailsPage fillAddressDetails(Customer customer, String comments) {
 
+        logger.info("Filling address details");
         firstNameInput.sendKeys(customer.getFirstName());
         lastNameInput.sendKeys(customer.getLastName());
         companyNameInput.sendKeys(customer.getCompanyName());
 
         Select cuntrySelect = new Select(billingCountrySelect);
         cuntrySelect.selectByVisibleText(customer.getCountry());
-        billingAddressInput.sendKeys(String.format("%s %s",customer.getStreet(), customer.getFlatNumber()));
+        billingAddressInput.sendKeys(String.format("%s %s", customer.getStreet(), customer.getFlatNumber()));
         billingPostcodeInput.sendKeys(customer.getZipCode());
         billingCityInput.sendKeys(customer.getCity());
         billingPhoneInput.sendKeys(customer.getPhone());
         billingEmailInput.sendKeys(customer.getEmail());
         orderCommentsInput.sendKeys(comments);
         placeOrderButton.click();
+        logger.info("Filling details done");
 
         return new OrderDetailsPage(driver);
     }
